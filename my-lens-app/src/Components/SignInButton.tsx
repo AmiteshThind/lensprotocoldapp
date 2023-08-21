@@ -57,6 +57,7 @@ export default function SignInButton({}: Props) {
   }
 
   if (profileQuery.data?.defaultProfile) {
+    console.log(profileQuery.data);
     return <div>Hello {profileQuery.data?.defaultProfile.handle}</div>;
   }
 

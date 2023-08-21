@@ -8,13 +8,14 @@
 import { useAddress, useSDK } from "@thirdweb-dev/react";
 import generateChallange from "./generateChallenge";
 import { useAuthenticateMutation } from "@/src/graphql/generated";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { setAccessToken } from "./helpers";
 
 export default function useLogin() {
   const address = useAddress();
   const sdk = useSDK();
   const { mutateAsync: sendSignedMessage } = useAuthenticateMutation();
+  const client = useQueryClient();
   async function login() {
     if (!address) return; // must be connected
     //1. generate challenge which comes from the lens api
@@ -36,6 +37,8 @@ export default function useLogin() {
     const { accessToken, refreshToken } = authenticate;
     setAccessToken(accessToken, refreshToken);
     //5. store the accoes token inside local storage so we can use it.
+
+    client.invalidateQueries(["lens-user", address]); 
   }
 
   //return the usemeutation hook wrappign the async function
