@@ -8,6 +8,7 @@ import {
 import React from "react";
 import useLensUser from "../lib/auth/useLensUser";
 import useLogin from "../lib/auth/useLogin";
+import truncateEthAddress from "truncate-eth-address";
 
 type Props = {};
 
@@ -19,11 +20,13 @@ export default function SignInButton({}: Props) {
   const { mutate: requestLogin } = useLogin();
   //user needs to connect wallet
   if (!address) {
-    <ConnectWallet />;
+    <ConnectWallet btnTitle="Connect Wallet" />;
   }
   // user needs to be on right network
   if (isOnWrongNetwork) {
-    <button onClick={() => switchChain(ChainId.Mumbai)}>Switch Network</button>;
+    <button onClick={() => switchChain(ChainId.Polygon)}>
+      Switch Network
+    </button>;
   }
 
   //loading signed in state
@@ -36,6 +39,7 @@ export default function SignInButton({}: Props) {
   if (!isSignedInQuery.data) {
     return (
       <button
+        className="btn bg-teal-600 text-white"
         onClick={() => {
           requestLogin();
         }}
@@ -58,7 +62,9 @@ export default function SignInButton({}: Props) {
 
   if (profileQuery.data?.defaultProfile) {
     console.log(profileQuery.data);
-    return <div>Hello {profileQuery.data?.defaultProfile.handle}</div>;
+    if (address) {
+      return <div>{truncateEthAddress(address)}</div>;
+    }
   }
 
   return <div>Something went wrong</div>;
