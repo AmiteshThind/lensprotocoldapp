@@ -10,11 +10,17 @@ import {
 import Navbar from "../Components/Navbar";
 
 export default function Home() {
-  const { isLoading, error, data } = useExplorePublicationsQuery({
-    request: {
-      sortCriteria: PublicationSortCriteria.TopCollected,
+  const { isLoading, error, data } = useExplorePublicationsQuery(
+    {
+      request: {
+        sortCriteria: PublicationSortCriteria.TopCollected,
+      },
     },
-  });
+    {
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+    }
+  );
   console.log(data);
   if (isLoading) {
     <div
@@ -34,16 +40,9 @@ export default function Home() {
           <Navbar />
         </div>
         <div className="flex   mt-5  flex-col xl:w-1/3 lg:w-1/2 md:w-1/2 sm:w-full w-full h-full ">
-          {data?.explorePublications.items
-            .filter(
-              (publication) =>
-                publication?.metadata?.name &&
-                publication?.metadata?.description &&
-                publication?.metadata?.media[0]?.original.url
-            )
-            .map((publication) => (
-              <FeedPost publication={publication} key={publication.id} />
-            ))}
+          {data?.explorePublications.items.map((publication) => (
+            <FeedPost publication={publication} key={publication.id} />
+          ))}
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { ExplorePublicationsQuery } from "../graphql/generated";
 import { MediaRenderer } from "@thirdweb-dev/react";
 import { Player } from "@livepeer/react";
+import Link from "next/link";
 
 type Props = {
   publication: ExplorePublicationsQuery["explorePublications"]["items"][0];
@@ -28,7 +29,9 @@ const FeedPost = ({ publication }: Props) => {
             </div>
 
             <h2 className="card-title">
-              {publication?.profile?.name || publication?.profile.handle}
+              <Link href={`/profile/${publication.profile.handle}`}>
+                {publication?.profile?.name || publication?.profile.handle}
+              </Link>
             </h2>
           </div>
           {publication?.metadata?.media?.length > 0 && (

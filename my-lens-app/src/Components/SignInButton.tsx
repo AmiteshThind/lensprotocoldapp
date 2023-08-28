@@ -20,7 +20,9 @@ export default function SignInButton({}: Props) {
   const { mutate: requestLogin } = useLogin();
   //user needs to connect wallet
   if (!address) {
-    <ConnectWallet btnTitle="Connect Wallet" />;
+    return <ConnectWallet btnTitle="Connect Wallet" />;
+  } else {
+    console.log("ADDRESS" + address);
   }
   // user needs to be on right network
   if (isOnWrongNetwork) {

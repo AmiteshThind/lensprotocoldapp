@@ -38,7 +38,7 @@ export default function useLogin() {
     setAccessToken(accessToken, refreshToken);
     //5. store the accoes token inside local storage so we can use it.
 
-    client.invalidateQueries(["lens-user", address]); 
+    client.invalidateQueries(["lens-user", address]);
   }
 
   //return the usemeutation hook wrappign the async function
