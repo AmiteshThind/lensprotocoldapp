@@ -6,7 +6,7 @@ type Props = {};
 const Navbar = (props: Props) => {
   return (
     <div className="w-full ">
-      <div className="navbar px-5 bg-base-100">
+      <div className="navbar px-5">
         <div className="navbar-start">
           <a className="normal-case text-xl ">WisDAO</a>
         </div>

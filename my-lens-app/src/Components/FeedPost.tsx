@@ -10,32 +10,32 @@ type Props = {
 
 const FeedPost = ({ publication }: Props) => {
   return (
-    <div className="flex w-full shadow-2xl shadow-teal-600">
-      <div className="card w-full rounded-none bg-base-100 border-b border-slate-600 ">
-        <div className="card-body">
-          <div className="flex">
-            <div className="avatar">
-              <div className="w-12 mx-3 rounded-full">
-                <MediaRenderer
-                  width="100%"
-                  height="100%"
-                  src={
-                    // @ts-ignore - the type does exist
-                    publication?.profile?.picture?.original?.url ||
-                    "https://soccerpointeclaire.com/wp-content/uploads/2021/06/default-profile-pic-e1513291410505.jpg"
-                  }
-                />
+    <div className="flex w-full my-5   	">
+      <div className=" transition delay-150  card border border-black w-full rounded-3xl bg-white ">
+        <div>
+          <Link href={`/profile/${publication.profile.handle}`}>
+            <div className="flex mx-5 my-5">
+              <div className="avatar">
+                <div className="w-12 mx-3 rounded-full">
+                  <MediaRenderer
+                    width="100%"
+                    height="100%"
+                    src={
+                      // @ts-ignore - the type does exist
+                      publication?.profile?.picture?.original?.url ||
+                      "https://soccerpointeclaire.com/wp-content/uploads/2021/06/default-profile-pic-e1513291410505.jpg"
+                    }
+                  />
+                </div>
               </div>
-            </div>
 
-            <h2 className="card-title">
-              <Link href={`/profile/${publication.profile.handle}`}>
+              <h2 className="card-title">
                 {publication?.profile?.name || publication?.profile.handle}
-              </Link>
-            </h2>
-          </div>
+              </h2>
+            </div>
+          </Link>
           {publication?.metadata?.media?.length > 0 && (
-            <div className=" my-5 flex justify-center">
+            <div className=" w-full my-5 flex ">
               {publication.metadata.media[0].original.url.includes("m3u8") ? (
                 <Player
                   src={publication?.metadata?.media[0]?.original?.url}
@@ -48,15 +48,15 @@ const FeedPost = ({ publication }: Props) => {
                 />
               ) : (
                 <MediaRenderer
-                  width="500px"
-                  height="500px"
+                  width="100%"
+                  height="100%"
                   src={publication.metadata.media[0].original.url}
                 />
               )}
             </div>
           )}
-          <div>
-            <div className="text-ellipsis overflow-hidden">
+          <div className="flex mx-5 my-5">
+            <div className="text-ellipsis text-black overflow-hidden    ">
               {publication.metadata.content}
             </div>
           </div>

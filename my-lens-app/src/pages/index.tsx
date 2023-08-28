@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex flex-col items-center h-full w-full">
+      <div className="flex flex-col items-center h-full w-full bg-gradient-to-b from-emerald-200 via-60% via-amber-50   to-orange-50 bg-fixed	">
         <div className="flex w-full my-5 h-12">
           <Navbar />
         </div>
