@@ -10,8 +10,8 @@ type Props = {
 
 const FeedPost = ({ publication }: Props) => {
   return (
-    <div className="flex w-full my-5   	">
-      <div className=" transition delay-150  card border border-black w-full rounded-3xl bg-white ">
+    <div className="flex w-full mb-5 relative top-10  ">
+      <div className=" transition delay-150  card  w-full  rounded-3xl  bg-white ">
         <div>
           <Link href={`/profile/${publication.profile.handle}`}>
             <div className="flex mx-5 my-5">
@@ -56,7 +56,7 @@ const FeedPost = ({ publication }: Props) => {
             </div>
           )}
           <div className="flex mx-5 my-5">
-            <div className="text-ellipsis text-black overflow-hidden    ">
+            <div className="text-ellipsis text-black overflow-hidden line-clamp-5  ">
               {publication.metadata.content}
             </div>
           </div>

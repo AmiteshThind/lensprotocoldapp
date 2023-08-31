@@ -2,6 +2,7 @@ import {
   ChainId,
   ConnectWallet,
   useAddress,
+  useDisconnect,
   useNetworkMismatch,
   useSwitchChain,
 } from "@thirdweb-dev/react";
@@ -18,9 +19,16 @@ export default function SignInButton({}: Props) {
   const switchChain = useSwitchChain(); //function to switch users network
   const { isSignedInQuery, profileQuery } = useLensUser();
   const { mutate: requestLogin } = useLogin();
+  const disconnect = useDisconnect();
+
   //user needs to connect wallet
   if (!address) {
-    return <ConnectWallet btnTitle="Connect Wallet" />;
+    return (
+      <ConnectWallet
+        className=" !mx-2 hover:scale-105 !duration-150  !border-2 !bg-emerald-400 !text-white font-bold !rounded-2xl "
+        btnTitle="Connect Wallet"
+      />
+    );
   } else {
     console.log("ADDRESS" + address);
   }
@@ -65,7 +73,11 @@ export default function SignInButton({}: Props) {
   if (profileQuery.data?.defaultProfile) {
     console.log(profileQuery.data);
     if (address) {
-      return <div>{truncateEthAddress(address)}</div>;
+      return (
+        <button onClick={() => disconnect()} className="cursor text-white mx-2">
+          {truncateEthAddress(address)}
+        </button>
+      );
     }
   }
 

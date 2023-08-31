@@ -8,6 +8,7 @@ import {
   useExplorePublicationsQuery,
 } from "../graphql/generated";
 import Navbar from "../Components/Navbar";
+import Menu from "../Components/Menu";
 
 export default function Home() {
   const { isLoading, error, data } = useExplorePublicationsQuery(
@@ -35,14 +36,18 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex flex-col items-center h-full w-full bg-gradient-to-b from-emerald-200 via-60% via-amber-50   to-orange-50 bg-fixed	">
-        <div className="flex w-full my-5 h-12">
-          <Navbar />
-        </div>
-        <div className="flex   mt-5  flex-col xl:w-1/3 lg:w-1/2 md:w-1/2 sm:w-full w-full h-full ">
-          {data?.explorePublications.items.map((publication) => (
-            <FeedPost publication={publication} key={publication.id} />
-          ))}
+      <div className=" w-full items-center fixed flex justify-center top-0 z-10 ">
+        <Navbar />
+      </div>
+      <div className="flex ml-5 ">
+        <div>
+          <div className="   flex items-center mt-20   flex-col   w-full   ">
+            <div className=" w-full  md:w-1/2 lg:w-1/3 xl:w-1/3 ">
+              {data?.explorePublications.items.map((publication) => (
+                <FeedPost publication={publication} key={publication.id} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
