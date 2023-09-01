@@ -10,12 +10,12 @@ type Props = {
 
 const FeedPost = ({ publication }: Props) => {
   return (
-    <div className="flex w-full mb-5 relative top-10  ">
-      <div className=" transition delay-150  card  w-full  rounded-3xl  bg-white ">
-        <div>
+    <div className="flex  mb-5  relative top-10  ">
+      <div className=" transition delay-150  card  w-full  rounded-3xl  bg-neutral-800 ">
+        <div className="text-neutral-100">
           <Link href={`/profile/${publication.profile.handle}`}>
             <div className="flex mx-5 my-5">
-              <div className="avatar">
+              <div className="avatar ">
                 <div className="w-12 mx-3 rounded-full">
                   <MediaRenderer
                     width="100%"
@@ -35,7 +35,7 @@ const FeedPost = ({ publication }: Props) => {
             </div>
           </Link>
           {publication?.metadata?.media?.length > 0 && (
-            <div className=" w-full my-5 flex ">
+            <div className="my-5 flex ">
               {publication.metadata.media[0].original.url.includes("m3u8") ? (
                 <Player
                   src={publication?.metadata?.media[0]?.original?.url}
@@ -56,7 +56,7 @@ const FeedPost = ({ publication }: Props) => {
             </div>
           )}
           <div className="flex mx-5 my-5">
-            <div className="text-ellipsis text-black overflow-hidden line-clamp-5  ">
+            <div className="text-ellipsis text-neutral-100 overflow-hidden line-clamp-5  ">
               {publication.metadata.content}
             </div>
           </div>

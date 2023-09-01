@@ -1,13 +1,20 @@
 import React from "react";
 import SignInButton from "./SignInButton";
 import { MediaRenderer } from "@thirdweb-dev/react";
+import { AiOutlineFileAdd } from "react-icons/ai";
+import {
+  HiOutlineBriefcase,
+  HiOutlineHome,
+  HiOutlineChatAlt2,
+} from "react-icons/hi";
+import Link from "next/link";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <div className="navbar z-10 bg-base-100 !shadow-2xl w-full ">
-      <div className="navbar-start">
+    <div className="navbar backdrop-blur bg-neutral-900/75 z-10   border-b border-neutral-800  w-full ">
+      <div className="navbar-start ">
         <div className="dropdown ">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -27,16 +34,19 @@ const Navbar = (props: Props) => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2   bg-emerald-400  text-white font-semibold rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+              <a className="hover:text-neutral-800">Feed</a>
             </li>
             <li>
-              <a>Item 1</a>
+              <a className="hover:text-neutral-800">My Wizz</a>
             </li>
             <li>
-              <a>Item 3</a>
+              <a className="hover:text-neutral-800">Create Wizz</a>
+            </li>
+            <li>
+              <a className="hover:text-neutral-800">Coming soon</a>
             </li>
           </ul>
         </div>
@@ -50,25 +60,62 @@ const Navbar = (props: Props) => {
               />
             </div>
           </div>
-          <div className="text-center text-sm font-bold text-emerald-400">
-            WisDAO
+          <div className="text-center text-sm  font-semibold text-emerald-300 border-text">
+            WizDAO
           </div>
         </div>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal">
-          <li>
-            <a>Feed</a>
+      <div className="navbar-center hidden    lg:flex">
+        <ul className="menu menu-horizontal text-md ">
+          <li className="  ">
+            <Link
+              href={"/index"}
+              className="py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+              data-tip="Home"
+            >
+              <HiOutlineHome className="w-8 h-8" />
+            </Link>
           </li>
-          <li>
-            <a>My Wizz</a>
+          <li className=" ">
+            <Link
+              href={""}
+              className=" py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+              data-tip="My Wizz"
+            >
+              <HiOutlineBriefcase className="w-8 h-8" />
+            </Link>
           </li>
-          <li>
-            <a>Profile</a>
+          <li className=" ">
+            <Link
+              href={"/createpost"}
+              className=" py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+              data-tip="Create Wizz"
+            >
+              <AiOutlineFileAdd className="w-8 h-8" />
+            </Link>
+          </li>
+          <li className="">
+            <a
+              className=" py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+              data-tip="Coming Soon"
+            >
+              <HiOutlineChatAlt2 className="w-8 h-8" />
+            </a>
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end flex w-full md:w-1/2  ">
+        <div className="avatar ">
+          <div className="w-12 mx-3 rounded-full">
+            <MediaRenderer
+              width="100%"
+              height="100%"
+              src={
+                "https://soccerpointeclaire.com/wp-content/uploads/2021/06/default-profile-pic-e1513291410505.jpg"
+              }
+            />
+          </div>
+        </div>
         <SignInButton />
       </div>
     </div>

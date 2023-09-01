@@ -10,7 +10,11 @@ import {
 import Navbar from "../Components/Navbar";
 import Menu from "../Components/Menu";
 
-export default function Home() {
+type HomeProps = {
+  children: React.ReactNode;
+};
+
+export default function Home(props: HomeProps) {
   const { isLoading, error, data } = useExplorePublicationsQuery(
     {
       request: {
@@ -36,18 +40,14 @@ export default function Home() {
 
   return (
     <div>
-      <div className=" w-full items-center fixed flex justify-center top-0 z-10 ">
+      {/* <div className=" w-full  items-center fixed flex justify-center top-0  z-10 ">
         <Navbar />
-      </div>
-      <div className="flex ml-5 ">
-        <div>
-          <div className="   flex items-center mt-20   flex-col   w-full   ">
-            <div className=" w-full  md:w-1/2 lg:w-1/3 xl:w-1/3 ">
-              {data?.explorePublications.items.map((publication) => (
-                <FeedPost publication={publication} key={publication.id} />
-              ))}
-            </div>
-          </div>
+      </div> */}
+      <div className=" flex   mt-20  items-center flex-col  w-full   ">
+        <div className=" w-5/6 sm:w-5/6   md:w-4/6 lg:w-1/3 xl:w-1/3 ">
+          {data?.explorePublications.items.map((publication) => (
+            <FeedPost publication={publication} key={publication.id} />
+          ))}
         </div>
       </div>
     </div>

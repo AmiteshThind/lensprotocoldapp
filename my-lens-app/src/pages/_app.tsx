@@ -9,6 +9,7 @@ import {
   studioProvider,
 } from "@livepeer/react";
 import * as React from "react";
+import Layout from ".";
 
 const livepeerClient = createReactClient({
   provider: studioProvider({
@@ -16,15 +17,7 @@ const livepeerClient = createReactClient({
   }),
 });
 
-const theme: ThemeConfig = {
-  colors: {
-    accent: "rgb(0, 145, 255)",
-    containerBorderColor: "rgba(0, 145, 255, 0.9)",
-  },
-  fonts: {
-    display: "Inter",
-  },
-};
+const theme: ThemeConfig = {};
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -36,7 +29,9 @@ export default function App({ Component, pageProps }: AppProps) {
         clientId={process.env.CLIENT_ID}
       >
         <QueryClientProvider client={queryClient}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </QueryClientProvider>
       </ThirdwebProvider>
     </LivepeerConfig>
