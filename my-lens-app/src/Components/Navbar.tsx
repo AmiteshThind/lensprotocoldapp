@@ -8,10 +8,13 @@ import {
   HiOutlineChatAlt2,
 } from "react-icons/hi";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const pathname = usePathname();
+  console.log(pathname + "wp");
   return (
     <div className=" w-full  items-center fixed flex justify-center top-0  z-10">
       <div className="navbar backdrop-blur bg-neutral-900/75 z-10   border-b border-neutral-800  w-full ">
@@ -68,34 +71,49 @@ const Navbar = (props: Props) => {
         </div>
         <div className="navbar-center hidden    lg:flex">
           <ul className="menu menu-horizontal text-md ">
-            <li className="  ">
+            <li>
               <Link
                 href={"/"}
-                className="py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                className={
+                  pathname === "/"
+                    ? "text-emerald-400 py-2 px-10 hover:text-emerald-400 hover:tool hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                    : "" +
+                      "py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                }
                 data-tip="Home"
               >
                 <HiOutlineHome className="w-8 h-8" />
               </Link>
             </li>
-            <li className=" ">
+            <li>
               <Link
                 href={""}
-                className=" py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                className={
+                  pathname === "/mywizz"
+                    ? "text-emerald-400 py-2 px-10 hover:text-emerald-400 hover:tool hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                    : "" +
+                      "py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                }
                 data-tip="My Wizz"
               >
                 <HiOutlineBriefcase className="w-8 h-8" />
               </Link>
             </li>
-            <li className=" ">
+            <li>
               <Link
-                href={"/createpost"}
-                className=" py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                href={"/createwi"}
+                className={
+                  pathname === "/createwizz"
+                    ? "text-emerald-400 py-2 px-10 hover:text-emerald-400 hover:tool hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                    : "" +
+                      "py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                }
                 data-tip="Create Wizz"
               >
                 <AiOutlineFileAdd className="w-8 h-8" />
               </Link>
             </li>
-            <li className="">
+            <li>
               <a
                 className=" py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
                 data-tip="Coming Soon"
