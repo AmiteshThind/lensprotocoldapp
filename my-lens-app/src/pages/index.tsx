@@ -8,7 +8,6 @@ import {
   useExplorePublicationsQuery,
 } from "../graphql/generated";
 import Navbar from "../Components/Navbar";
-import Menu from "../Components/Menu";
 
 type HomeProps = {
   children: React.ReactNode;
@@ -40,9 +39,6 @@ export default function Home(props: HomeProps) {
 
   return (
     <div>
-      {/* <div className=" w-full  items-center fixed flex justify-center top-0  z-10 ">
-        <Navbar />
-      </div> */}
       <div className=" flex   mt-20  items-center flex-col  w-full   ">
         <div className=" w-5/6 sm:w-5/6   md:w-4/6 lg:w-1/3 xl:w-1/3 ">
           {data?.explorePublications.items.map((publication) => (

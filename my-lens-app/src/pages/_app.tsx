@@ -10,6 +10,7 @@ import {
 } from "@livepeer/react";
 import * as React from "react";
 import Layout from ".";
+import Navbar from "../Components/Navbar";
 
 const livepeerClient = createReactClient({
   provider: studioProvider({
@@ -29,9 +30,8 @@ export default function App({ Component, pageProps }: AppProps) {
         clientId={process.env.CLIENT_ID}
       >
         <QueryClientProvider client={queryClient}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <Navbar />
+          <Component {...pageProps} />
         </QueryClientProvider>
       </ThirdwebProvider>
     </LivepeerConfig>
