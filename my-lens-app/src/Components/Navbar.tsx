@@ -9,11 +9,14 @@ import {
 } from "react-icons/hi";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import useLensUser from "../lib/auth/useLensUser";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const pathname = usePathname();
+  const { profileQuery } = useLensUser();
+  console.log(profileQuery.data?.defaultProfile?.picture?.original?.url);
   console.log(pathname + "wp");
   return (
     <div className=" w-full  items-center fixed flex justify-center top-0  z-10">
@@ -76,7 +79,7 @@ const Navbar = (props: Props) => {
                 href={"/"}
                 className={
                   pathname === "/"
-                    ? "text-emerald-400 py-2 px-10 hover:text-emerald-400 hover:tool hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                    ? "text-emerald-400 py-2 px-10 hover:text-emerald-300 hover:tool hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
                     : "" +
                       "py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
                 }
@@ -87,10 +90,10 @@ const Navbar = (props: Props) => {
             </li>
             <li>
               <Link
-                href={""}
+                href={"/myprofile"}
                 className={
-                  pathname === "/mywizz"
-                    ? "text-emerald-400 py-2 px-10 hover:text-emerald-400 hover:tool hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                  pathname === "/myprofile"
+                    ? "text-emerald-400 py-2 px-10 hover:text-emerald-300 hover:tool hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
                     : "" +
                       "py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
                 }
@@ -101,10 +104,10 @@ const Navbar = (props: Props) => {
             </li>
             <li>
               <Link
-                href={"/createwi"}
+                href={"/createwizz"}
                 className={
                   pathname === "/createwizz"
-                    ? "text-emerald-400 py-2 px-10 hover:text-emerald-400 hover:tool hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
+                    ? "text-emerald-400 py-2 px-10 hover:text-emerald-300 hover:tool hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
                     : "" +
                       "py-2 px-10 hover:tooltip tooltip-primary hover:tooltip-open hover:tooltip-bottom"
                 }
@@ -124,18 +127,30 @@ const Navbar = (props: Props) => {
           </ul>
         </div>
         <div className="navbar-end flex w-full md:w-1/2  ">
-          <div className="avatar ">
-            <div className="w-12 mx-3 rounded-full">
-              <MediaRenderer
-                width="100%"
-                height="100%"
-                src={
-                  "https://soccerpointeclaire.com/wp-content/uploads/2021/06/default-profile-pic-e1513291410505.jpg"
-                }
-              />
+          <div
+            className={
+              !!profileQuery.data
+                ? " bg-emerald-300 flex items-center rounded-full p-1"
+                : "flex items-center"
+            }
+          >
+            <div className="  avatar ">
+              <div className="w-12 h-12 mx-2 rounded-full ">
+                <MediaRenderer
+                  width="100%"
+                  height="100%"
+                  src={
+                    // @ts-ignore - the type does exist
+                    profileQuery.data?.defaultProfile?.picture?.original?.url ||
+                    "https://soccerpointeclaire.com/wp-content/uploads/2021/06/default-profile-pic-e1513291410505.jpg"
+                  }
+                />
+              </div>
+            </div>
+            <div>
+              <SignInButton />
             </div>
           </div>
-          <SignInButton />
         </div>
       </div>
     </div>
