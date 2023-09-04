@@ -16,7 +16,6 @@ type Props = {};
 const Navbar = (props: Props) => {
   const pathname = usePathname();
   const { profileQuery } = useLensUser();
-  console.log(profileQuery.data?.defaultProfile?.picture?.original?.url);
   console.log(pathname + "wp");
   return (
     <div className=" w-full  items-center fixed flex justify-center top-0  z-10">

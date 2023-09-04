@@ -13,6 +13,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { AiOutlineLeftCircle } from "react-icons/ai";
 import Link from "next/link";
+import { MediaRenderer } from "@thirdweb-dev/react";
 type Props = {};
 
 const ProfilePage = (props: Props) => {
@@ -38,8 +39,67 @@ const ProfilePage = (props: Props) => {
           <AiOutlineLeftCircle className="text-emerald-300 h-8 w-8" />
         </Link>
       </div>
-      <div></div>
-      <div></div>
+      <div className="bg-neutral-800 mt-5 flex flex-col justify-center md:flex-row items-center p-5 rounded-xl">
+        <div className="flex items-center justify-center flex-col sm:flex-row  w-full md:w-2/6 ">
+          <div className="avatar ">
+            <div className="w-36 h-36 mx-3 rounded-full">
+              <MediaRenderer
+                width="100%"
+                height="100%"
+                src={
+                  // @ts-ignore - the type does exist
+                  profileData?.profile?.picture?.original?.url ||
+                  "https://soccerpointeclaire.com/wp-content/uploads/2021/06/default-profile-pic-e1513291410505.jpg"
+                }
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col  justify-center items-center mx-5    ">
+            <div className="flex flex-col text-center sm:text-start   w-full ">
+              <div className="text-3xl mt-2 font-semibold">
+                {profileData?.profile?.name}
+              </div>
+              <div className="text-lg mt-2 text-neutral-300">
+                {profileData?.profile?.stats.totalFollowers} Followers
+              </div>
+              <div className="text-lg text-neutral-300">
+                {profileData?.profile?.stats.totalFollowing} Following
+              </div>
+              <div className="mt-5 justify-center">
+                <button className="hover:scale-105 duration-150 px-10 py-2    bg-white text-black font-semibold rounded-2xl ">
+                  {profileData?.profile?.isFollowedByMe ? (
+                    <span>Following</span>
+                  ) : (
+                    <span>Follow</span>
+                  )}
+                  {/* //need to add follow functionality */}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex w-full md:w-3/6 mt-10 md:mt-0  text-center   justify-center  md:justify-start items-center text-2xl">
+          <div className="mx-5">
+            <span className="text-emerald-300 mx-1">
+              {profileData?.profile?.stats.totalPosts}
+            </span>{" "}
+            Wizzies
+          </div>
+          <div className="mx-5">
+            <span className="text-emerald-300 mx-1">
+              {profileData?.profile?.stats.totalCollects}
+            </span>{" "}
+            Collects
+          </div>
+          <div className="mx-5">
+            <span className="text-emerald-300 mx-1">
+              {profileData?.profile?.stats.totalComments}
+            </span>{" "}
+            Comments
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
