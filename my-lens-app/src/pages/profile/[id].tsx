@@ -8,12 +8,13 @@
 // opton to follow or unfollow user
 // see list of Wizzies User has created and have option to comment  on them/ interact with them just like in the feed
 
-import { useProfileQuery } from "@/src/graphql/generated";
+import { useProfileQuery, usePublicationsQuery } from "@/src/graphql/generated";
 import React from "react";
 import { useRouter } from "next/router";
 import { AiOutlineLeftCircle } from "react-icons/ai";
 import Link from "next/link";
 import { MediaRenderer } from "@thirdweb-dev/react";
+import FeedPost from "@/src/Components/FeedPost";
 type Props = {};
 
 const ProfilePage = (props: Props) => {
@@ -26,7 +27,20 @@ const ProfilePage = (props: Props) => {
     },
   });
 
+  const { isLoading: isLoadingPublications, data: publicationsData } =
+    usePublicationsQuery(
+      {
+        request: {
+          profileId: profileData?.profile?.id,
+        },
+      },
+      {
+        enabled: !!profileData?.profile?.id,
+      }
+    );
+
   console.log(profileData);
+  console.log(publicationsData);
 
   //row 1 - back button
   // row 2 profile pic, bio, follow button , stats
@@ -98,6 +112,15 @@ const ProfilePage = (props: Props) => {
             </span>{" "}
             Comments
           </div>
+        </div>
+      </div>
+      <div className="w-full justify-center flex flex-wrap">
+        <div className=" flex justify-center flex-col items-center">
+          {publicationsData?.publications.items.map((publication) => (
+            <div className="w-full md:w-2/3 lg:w-1/3">
+              <FeedPost publication={publication} key={publication.id} />
+            </div>
+          ))}
         </div>
       </div>
     </div>
