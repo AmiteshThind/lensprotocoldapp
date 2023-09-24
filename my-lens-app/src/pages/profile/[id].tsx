@@ -13,11 +13,21 @@ import React from "react";
 import { useRouter } from "next/router";
 import { AiOutlineLeftCircle } from "react-icons/ai";
 import Link from "next/link";
-import { MediaRenderer } from "@thirdweb-dev/react";
+import { MediaRenderer, Web3Button } from "@thirdweb-dev/react";
 import FeedPost from "@/src/Components/FeedPost";
+import {
+  FOLLOW_NFT_CONTRACT_ABI,
+  FOLLOW_NFT_CONTRACT_ADDRESS,
+  LENS_CONTRACT_ABI,
+  LENS_CONTRACT_ADDRESS,
+} from "@/src/const/contracts";
+import { useFollow } from "@/src/lib/auth/useFollow";
+import { useUnfollow } from "@/src/lib/auth/useUnfollow";
 type Props = {};
 
 const ProfilePage = (props: Props) => {
+  const { mutateAsync: followUser } = useFollow();
+  const { mutateAsync: unfollowUser } = useUnfollow();
   const router = useRouter();
   const { id } = router.query;
   const { isLoading: loadingProfile, data: profileData } = useProfileQuery({
@@ -55,7 +65,7 @@ const ProfilePage = (props: Props) => {
       </div>
       <div className="bg-neutral-800 mt-5 flex flex-col justify-center md:flex-row items-center p-5 rounded-xl">
         <div className="flex items-center justify-center flex-col sm:flex-row  w-full md:w-2/6 ">
-          <div className="avatar ">
+          <div className="avatar h-full">
             <div className="w-36 h-36 mx-3 rounded-full">
               <MediaRenderer
                 width="100%"
@@ -81,14 +91,29 @@ const ProfilePage = (props: Props) => {
                 {profileData?.profile?.stats.totalFollowing} Following
               </div>
               <div className="mt-5 justify-center">
-                <button className="hover:scale-105 duration-150 px-10 py-2    bg-white text-black font-semibold rounded-2xl ">
-                  {profileData?.profile?.isFollowedByMe ? (
-                    <span>Following</span>
-                  ) : (
+                {!profileData?.profile?.isFollowedByMe ? (
+                  <Web3Button
+                    contractAddress={LENS_CONTRACT_ADDRESS}
+                    contractAbi={LENS_CONTRACT_ABI}
+                    action={async () =>
+                      await followUser(profileData?.profile?.id)
+                    }
+                    className="hover:scale-105 duration-150 px-10 py-2    bg-white text-black font-semibold rounded-2xl "
+                  >
                     <span>Follow</span>
-                  )}
-                  {/* //need to add follow functionality */}
-                </button>
+                  </Web3Button>
+                ) : (
+                  <Web3Button
+                    contractAddress={FOLLOW_NFT_CONTRACT_ADDRESS}
+                    contractAbi={FOLLOW_NFT_CONTRACT_ABI}
+                    action={async () =>
+                      await unfollowUser(profileData?.profile?.id)
+                    }
+                    className="hover:scale-105 duration-150 px-10 py-2    bg-white text-black font-semibold rounded-2xl "
+                  >
+                    <span>Unfollow</span>
+                  </Web3Button>
+                )}
               </div>
             </div>
           </div>
@@ -116,9 +141,9 @@ const ProfilePage = (props: Props) => {
       </div>
       <div className="w-full justify-center flex flex-wrap">
         <div className=" flex justify-center flex-col items-center">
-          {publicationsData?.publications.items.map((publication) => (
+          {publicationsData?.publications.items.map((publication, key) => (
             <div className="w-full md:w-2/3 lg:w-1/3">
-              <FeedPost publication={publication} key={publication.id} />
+              <FeedPost publication={publication} key={key} />
             </div>
           ))}
         </div>
