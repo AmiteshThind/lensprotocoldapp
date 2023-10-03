@@ -9,9 +9,9 @@ import {
 } from "../graphql/generated";
 import Navbar from "../Components/Navbar";
 
-type HomeProps = {
+interface HomeProps {
   children: React.ReactNode;
-};
+}
 
 export default function Home(props: HomeProps) {
   const { isLoading, error, data } = useExplorePublicationsQuery(
