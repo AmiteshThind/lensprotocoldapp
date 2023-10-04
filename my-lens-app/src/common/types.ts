@@ -3,3 +3,8 @@ export interface WizzPost {
   description: string;
   media: File | null;
 }
+
+export interface WizzPostFormError {
+  categoryError: string;
+  descriptionError: string;
+}
