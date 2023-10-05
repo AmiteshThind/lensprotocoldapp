@@ -4,7 +4,7 @@ import {
   UseMutationOptions,
   UseQueryOptions,
 } from "@tanstack/react-query";
-import { fetcher } from "../../auth-fetcher";
+import { fetcher } from "./auth-fetcher";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -3943,6 +3943,7 @@ export type PublicationStatsFieldsFragment = {
 export type MetadataOutputFieldsFragment = {
   __typename?: "MetadataOutput";
   name?: string | null;
+  image?: any | null;
   description?: any | null;
   content?: any | null;
   media: Array<{
@@ -4433,6 +4434,7 @@ export type PostFieldsFragment = {
   metadata: {
     __typename?: "MetadataOutput";
     name?: string | null;
+    image?: any | null;
     description?: any | null;
     content?: any | null;
     media: Array<{
@@ -5041,6 +5043,7 @@ export type MirrorBaseFieldsFragment = {
   metadata: {
     __typename?: "MetadataOutput";
     name?: string | null;
+    image?: any | null;
     description?: any | null;
     content?: any | null;
     media: Array<{
@@ -5697,6 +5700,7 @@ export type MirrorFieldsFragment = {
                           metadata: {
                             __typename?: "MetadataOutput";
                             name?: string | null;
+                            image?: any | null;
                             description?: any | null;
                             content?: any | null;
                             media: Array<{
@@ -6325,6 +6329,7 @@ export type MirrorFieldsFragment = {
                           metadata: {
                             __typename?: "MetadataOutput";
                             name?: string | null;
+                            image?: any | null;
                             description?: any | null;
                             content?: any | null;
                             media: Array<{
@@ -6943,6 +6948,7 @@ export type MirrorFieldsFragment = {
                     metadata: {
                       __typename?: "MetadataOutput";
                       name?: string | null;
+                      image?: any | null;
                       description?: any | null;
                       content?: any | null;
                       media: Array<{
@@ -7569,6 +7575,7 @@ export type MirrorFieldsFragment = {
                     metadata: {
                       __typename?: "MetadataOutput";
                       name?: string | null;
+                      image?: any | null;
                       description?: any | null;
                       content?: any | null;
                       media: Array<{
@@ -8185,6 +8192,7 @@ export type MirrorFieldsFragment = {
               metadata: {
                 __typename?: "MetadataOutput";
                 name?: string | null;
+                image?: any | null;
                 description?: any | null;
                 content?: any | null;
                 media: Array<{
@@ -8811,6 +8819,7 @@ export type MirrorFieldsFragment = {
               metadata: {
                 __typename?: "MetadataOutput";
                 name?: string | null;
+                image?: any | null;
                 description?: any | null;
                 content?: any | null;
                 media: Array<{
@@ -9424,6 +9433,7 @@ export type MirrorFieldsFragment = {
         metadata: {
           __typename?: "MetadataOutput";
           name?: string | null;
+          image?: any | null;
           description?: any | null;
           content?: any | null;
           media: Array<{
@@ -10041,6 +10051,7 @@ export type MirrorFieldsFragment = {
         metadata: {
           __typename?: "MetadataOutput";
           name?: string | null;
+          image?: any | null;
           description?: any | null;
           content?: any | null;
           media: Array<{
@@ -10645,6 +10656,7 @@ export type MirrorFieldsFragment = {
   metadata: {
     __typename?: "MetadataOutput";
     name?: string | null;
+    image?: any | null;
     description?: any | null;
     content?: any | null;
     media: Array<{
@@ -11254,6 +11266,7 @@ export type CommentBaseFieldsFragment = {
   metadata: {
     __typename?: "MetadataOutput";
     name?: string | null;
+    image?: any | null;
     description?: any | null;
     content?: any | null;
     media: Array<{
@@ -11900,6 +11913,7 @@ export type CommentFieldsFragment = {
                     metadata: {
                       __typename?: "MetadataOutput";
                       name?: string | null;
+                      image?: any | null;
                       description?: any | null;
                       content?: any | null;
                       media: Array<{
@@ -12526,6 +12540,7 @@ export type CommentFieldsFragment = {
                     metadata: {
                       __typename?: "MetadataOutput";
                       name?: string | null;
+                      image?: any | null;
                       description?: any | null;
                       content?: any | null;
                       media: Array<{
@@ -13142,6 +13157,7 @@ export type CommentFieldsFragment = {
               metadata: {
                 __typename?: "MetadataOutput";
                 name?: string | null;
+                image?: any | null;
                 description?: any | null;
                 content?: any | null;
                 media: Array<{
@@ -13768,6 +13784,7 @@ export type CommentFieldsFragment = {
               metadata: {
                 __typename?: "MetadataOutput";
                 name?: string | null;
+                image?: any | null;
                 description?: any | null;
                 content?: any | null;
                 media: Array<{
@@ -14381,6 +14398,7 @@ export type CommentFieldsFragment = {
         metadata: {
           __typename?: "MetadataOutput";
           name?: string | null;
+          image?: any | null;
           description?: any | null;
           content?: any | null;
           media: Array<{
@@ -14998,6 +15016,7 @@ export type CommentFieldsFragment = {
         metadata: {
           __typename?: "MetadataOutput";
           name?: string | null;
+          image?: any | null;
           description?: any | null;
           content?: any | null;
           media: Array<{
@@ -15602,6 +15621,7 @@ export type CommentFieldsFragment = {
   metadata: {
     __typename?: "MetadataOutput";
     name?: string | null;
+    image?: any | null;
     description?: any | null;
     content?: any | null;
     media: Array<{
@@ -16224,6 +16244,7 @@ export type CommentMirrorOfFieldsFragment = {
         metadata: {
           __typename?: "MetadataOutput";
           name?: string | null;
+          image?: any | null;
           description?: any | null;
           content?: any | null;
           media: Array<{
@@ -16841,6 +16862,7 @@ export type CommentMirrorOfFieldsFragment = {
         metadata: {
           __typename?: "MetadataOutput";
           name?: string | null;
+          image?: any | null;
           description?: any | null;
           content?: any | null;
           media: Array<{
@@ -17445,6 +17467,7 @@ export type CommentMirrorOfFieldsFragment = {
   metadata: {
     __typename?: "MetadataOutput";
     name?: string | null;
+    image?: any | null;
     description?: any | null;
     content?: any | null;
     media: Array<{
@@ -19350,6 +19373,48 @@ export type EncryptedMediaSetFieldsFragment = {
   } | null;
 };
 
+export type CreatePostTypedDataMutationVariables = Exact<{
+  request: CreatePublicPostRequest;
+}>;
+
+export type CreatePostTypedDataMutation = {
+  __typename?: "Mutation";
+  createPostTypedData: {
+    __typename?: "CreatePostBroadcastItemResult";
+    id: any;
+    expiresAt: any;
+    typedData: {
+      __typename?: "CreatePostEIP712TypedData";
+      types: {
+        __typename?: "CreatePostEIP712TypedDataTypes";
+        PostWithSig: Array<{
+          __typename?: "EIP712TypedDataField";
+          name: string;
+          type: string;
+        }>;
+      };
+      domain: {
+        __typename?: "EIP712TypedDataDomain";
+        name: string;
+        chainId: any;
+        version: string;
+        verifyingContract: any;
+      };
+      value: {
+        __typename?: "CreatePostEIP712TypedDataValue";
+        nonce: any;
+        deadline: any;
+        profileId: any;
+        contentURI: any;
+        collectModule: any;
+        collectModuleInitData: any;
+        referenceModule: any;
+        referenceModuleInitData: any;
+      };
+    };
+  };
+};
+
 export type ExplorePublicationsQueryVariables = Exact<{
   request: ExplorePublicationRequest;
 }>;
@@ -19567,6 +19632,7 @@ export type ExplorePublicationsQuery = {
                             metadata: {
                               __typename?: "MetadataOutput";
                               name?: string | null;
+                              image?: any | null;
                               description?: any | null;
                               content?: any | null;
                               media: Array<{
@@ -20197,6 +20263,7 @@ export type ExplorePublicationsQuery = {
                             metadata: {
                               __typename?: "MetadataOutput";
                               name?: string | null;
+                              image?: any | null;
                               description?: any | null;
                               content?: any | null;
                               media: Array<{
@@ -20817,6 +20884,7 @@ export type ExplorePublicationsQuery = {
                       metadata: {
                         __typename?: "MetadataOutput";
                         name?: string | null;
+                        image?: any | null;
                         description?: any | null;
                         content?: any | null;
                         media: Array<{
@@ -21445,6 +21513,7 @@ export type ExplorePublicationsQuery = {
                       metadata: {
                         __typename?: "MetadataOutput";
                         name?: string | null;
+                        image?: any | null;
                         description?: any | null;
                         content?: any | null;
                         media: Array<{
@@ -22063,6 +22132,7 @@ export type ExplorePublicationsQuery = {
                 metadata: {
                   __typename?: "MetadataOutput";
                   name?: string | null;
+                  image?: any | null;
                   description?: any | null;
                   content?: any | null;
                   media: Array<{
@@ -22689,6 +22759,7 @@ export type ExplorePublicationsQuery = {
                 metadata: {
                   __typename?: "MetadataOutput";
                   name?: string | null;
+                  image?: any | null;
                   description?: any | null;
                   content?: any | null;
                   media: Array<{
@@ -23302,6 +23373,7 @@ export type ExplorePublicationsQuery = {
           metadata: {
             __typename?: "MetadataOutput";
             name?: string | null;
+            image?: any | null;
             description?: any | null;
             content?: any | null;
             media: Array<{
@@ -23969,6 +24041,7 @@ export type ExplorePublicationsQuery = {
                                   metadata: {
                                     __typename?: "MetadataOutput";
                                     name?: string | null;
+                                    image?: any | null;
                                     description?: any | null;
                                     content?: any | null;
                                     media: Array<{
@@ -24611,6 +24684,7 @@ export type ExplorePublicationsQuery = {
                                   metadata: {
                                     __typename?: "MetadataOutput";
                                     name?: string | null;
+                                    image?: any | null;
                                     description?: any | null;
                                     content?: any | null;
                                     media: Array<{
@@ -25243,6 +25317,7 @@ export type ExplorePublicationsQuery = {
                             metadata: {
                               __typename?: "MetadataOutput";
                               name?: string | null;
+                              image?: any | null;
                               description?: any | null;
                               content?: any | null;
                               media: Array<{
@@ -25873,6 +25948,7 @@ export type ExplorePublicationsQuery = {
                             metadata: {
                               __typename?: "MetadataOutput";
                               name?: string | null;
+                              image?: any | null;
                               description?: any | null;
                               content?: any | null;
                               media: Array<{
@@ -26493,6 +26569,7 @@ export type ExplorePublicationsQuery = {
                       metadata: {
                         __typename?: "MetadataOutput";
                         name?: string | null;
+                        image?: any | null;
                         description?: any | null;
                         content?: any | null;
                         media: Array<{
@@ -27121,6 +27198,7 @@ export type ExplorePublicationsQuery = {
                       metadata: {
                         __typename?: "MetadataOutput";
                         name?: string | null;
+                        image?: any | null;
                         description?: any | null;
                         content?: any | null;
                         media: Array<{
@@ -27739,6 +27817,7 @@ export type ExplorePublicationsQuery = {
                 metadata: {
                   __typename?: "MetadataOutput";
                   name?: string | null;
+                  image?: any | null;
                   description?: any | null;
                   content?: any | null;
                   media: Array<{
@@ -28365,6 +28444,7 @@ export type ExplorePublicationsQuery = {
                 metadata: {
                   __typename?: "MetadataOutput";
                   name?: string | null;
+                  image?: any | null;
                   description?: any | null;
                   content?: any | null;
                   media: Array<{
@@ -28978,6 +29058,7 @@ export type ExplorePublicationsQuery = {
           metadata: {
             __typename?: "MetadataOutput";
             name?: string | null;
+            image?: any | null;
             description?: any | null;
             content?: any | null;
             media: Array<{
@@ -29601,6 +29682,7 @@ export type ExplorePublicationsQuery = {
           metadata: {
             __typename?: "MetadataOutput";
             name?: string | null;
+            image?: any | null;
             description?: any | null;
             content?: any | null;
             media: Array<{
@@ -30635,6 +30717,7 @@ export type PublicationsQuery = {
                             metadata: {
                               __typename?: "MetadataOutput";
                               name?: string | null;
+                              image?: any | null;
                               description?: any | null;
                               content?: any | null;
                               media: Array<{
@@ -31265,6 +31348,7 @@ export type PublicationsQuery = {
                             metadata: {
                               __typename?: "MetadataOutput";
                               name?: string | null;
+                              image?: any | null;
                               description?: any | null;
                               content?: any | null;
                               media: Array<{
@@ -31885,6 +31969,7 @@ export type PublicationsQuery = {
                       metadata: {
                         __typename?: "MetadataOutput";
                         name?: string | null;
+                        image?: any | null;
                         description?: any | null;
                         content?: any | null;
                         media: Array<{
@@ -32513,6 +32598,7 @@ export type PublicationsQuery = {
                       metadata: {
                         __typename?: "MetadataOutput";
                         name?: string | null;
+                        image?: any | null;
                         description?: any | null;
                         content?: any | null;
                         media: Array<{
@@ -33131,6 +33217,7 @@ export type PublicationsQuery = {
                 metadata: {
                   __typename?: "MetadataOutput";
                   name?: string | null;
+                  image?: any | null;
                   description?: any | null;
                   content?: any | null;
                   media: Array<{
@@ -33757,6 +33844,7 @@ export type PublicationsQuery = {
                 metadata: {
                   __typename?: "MetadataOutput";
                   name?: string | null;
+                  image?: any | null;
                   description?: any | null;
                   content?: any | null;
                   media: Array<{
@@ -34370,6 +34458,7 @@ export type PublicationsQuery = {
           metadata: {
             __typename?: "MetadataOutput";
             name?: string | null;
+            image?: any | null;
             description?: any | null;
             content?: any | null;
             media: Array<{
@@ -35037,6 +35126,7 @@ export type PublicationsQuery = {
                                   metadata: {
                                     __typename?: "MetadataOutput";
                                     name?: string | null;
+                                    image?: any | null;
                                     description?: any | null;
                                     content?: any | null;
                                     media: Array<{
@@ -35679,6 +35769,7 @@ export type PublicationsQuery = {
                                   metadata: {
                                     __typename?: "MetadataOutput";
                                     name?: string | null;
+                                    image?: any | null;
                                     description?: any | null;
                                     content?: any | null;
                                     media: Array<{
@@ -36311,6 +36402,7 @@ export type PublicationsQuery = {
                             metadata: {
                               __typename?: "MetadataOutput";
                               name?: string | null;
+                              image?: any | null;
                               description?: any | null;
                               content?: any | null;
                               media: Array<{
@@ -36941,6 +37033,7 @@ export type PublicationsQuery = {
                             metadata: {
                               __typename?: "MetadataOutput";
                               name?: string | null;
+                              image?: any | null;
                               description?: any | null;
                               content?: any | null;
                               media: Array<{
@@ -37561,6 +37654,7 @@ export type PublicationsQuery = {
                       metadata: {
                         __typename?: "MetadataOutput";
                         name?: string | null;
+                        image?: any | null;
                         description?: any | null;
                         content?: any | null;
                         media: Array<{
@@ -38189,6 +38283,7 @@ export type PublicationsQuery = {
                       metadata: {
                         __typename?: "MetadataOutput";
                         name?: string | null;
+                        image?: any | null;
                         description?: any | null;
                         content?: any | null;
                         media: Array<{
@@ -38807,6 +38902,7 @@ export type PublicationsQuery = {
                 metadata: {
                   __typename?: "MetadataOutput";
                   name?: string | null;
+                  image?: any | null;
                   description?: any | null;
                   content?: any | null;
                   media: Array<{
@@ -39433,6 +39529,7 @@ export type PublicationsQuery = {
                 metadata: {
                   __typename?: "MetadataOutput";
                   name?: string | null;
+                  image?: any | null;
                   description?: any | null;
                   content?: any | null;
                   media: Array<{
@@ -40046,6 +40143,7 @@ export type PublicationsQuery = {
           metadata: {
             __typename?: "MetadataOutput";
             name?: string | null;
+            image?: any | null;
             description?: any | null;
             content?: any | null;
             media: Array<{
@@ -40669,6 +40767,7 @@ export type PublicationsQuery = {
           metadata: {
             __typename?: "MetadataOutput";
             name?: string | null;
+            image?: any | null;
             description?: any | null;
             content?: any | null;
             media: Array<{
@@ -41438,6 +41537,7 @@ export const EncryptedMediaSetFieldsFragmentDoc = `
 export const MetadataOutputFieldsFragmentDoc = `
     fragment MetadataOutputFields on MetadataOutput {
   name
+  image
   description
   content
   media {
@@ -41817,6 +41917,63 @@ export const useChallengeQuery = <TData = ChallengeQuery, TError = unknown>(
       ChallengeDocument,
       variables
     ),
+    options
+  );
+export const CreatePostTypedDataDocument = `
+    mutation createPostTypedData($request: CreatePublicPostRequest!) {
+  createPostTypedData(request: $request) {
+    id
+    expiresAt
+    typedData {
+      types {
+        PostWithSig {
+          name
+          type
+        }
+      }
+      domain {
+        name
+        chainId
+        version
+        verifyingContract
+      }
+      value {
+        nonce
+        deadline
+        profileId
+        contentURI
+        collectModule
+        collectModuleInitData
+        referenceModule
+        referenceModuleInitData
+      }
+    }
+  }
+}
+    `;
+export const useCreatePostTypedDataMutation = <
+  TError = unknown,
+  TContext = unknown
+>(
+  options?: UseMutationOptions<
+    CreatePostTypedDataMutation,
+    TError,
+    CreatePostTypedDataMutationVariables,
+    TContext
+  >
+) =>
+  useMutation<
+    CreatePostTypedDataMutation,
+    TError,
+    CreatePostTypedDataMutationVariables,
+    TContext
+  >(
+    ["createPostTypedData"],
+    (variables?: CreatePostTypedDataMutationVariables) =>
+      fetcher<
+        CreatePostTypedDataMutation,
+        CreatePostTypedDataMutationVariables
+      >(CreatePostTypedDataDocument, variables)(),
     options
   );
 export const ExplorePublicationsDocument = `

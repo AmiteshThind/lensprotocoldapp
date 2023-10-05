@@ -9,9 +9,10 @@ type Props = {
 };
 
 const FeedPost = ({ publication }: Props) => {
+  console.log(publication.metadata.image);
   return (
-    <div className="flex  mb-5  relative top-10  ">
-      <div className=" transition delay-150  card  w-full  rounded-3xl  bg-neutral-800 ">
+    <div className="flex   relative  ">
+      <div className=" rounded-2xl my-2 transition delay-150 border-t border-r border-l border-neutral-700     w-full   bg-neutral-800 ">
         <div className="text-neutral-100">
           <Link href={`/profile/${publication.profile.handle}`}>
             <div className="flex mx-5 my-5">
@@ -34,11 +35,12 @@ const FeedPost = ({ publication }: Props) => {
               </h2>
             </div>
           </Link>
-          {publication?.metadata?.media?.length > 0 && (
-            <div className="my-5 flex ">
-              {publication.metadata.media[0].original.url.includes("m3u8") ? (
+          {(publication?.metadata?.media?.length > 0 ||
+            publication.metadata.image) && (
+            <div className="my-5 px-10 flex ">
+              {publication?.metadata?.image.includes("MOV") ? (
                 <Player
-                  src={publication?.metadata?.media[0]?.original?.url}
+                  src={publication?.metadata?.image}
                   showPipButton
                   showTitle={true}
                   aspectRatio="16to9"
@@ -48,16 +50,19 @@ const FeedPost = ({ publication }: Props) => {
                 />
               ) : (
                 <MediaRenderer
-                  width="100%"
+                  width="75%"
                   height="100%"
-                  src={publication.metadata.media[0].original.url}
+                  src={
+                    publication.metadata.image ||
+                    publication.metadata.media[0].original.url
+                  }
                 />
               )}
             </div>
           )}
           <div className="flex mx-5 my-5">
             <div className="text-ellipsis text-neutral-100 overflow-hidden line-clamp-5  ">
-              {publication.metadata.content}
+              {publication.metadata.description}
             </div>
           </div>
         </div>

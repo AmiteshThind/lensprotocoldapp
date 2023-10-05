@@ -42,6 +42,7 @@ const ProfilePage = (props: Props) => {
       {
         request: {
           profileId: profileData?.profile?.id,
+          sources: ["wizz_dao"],
         },
       },
       {
@@ -121,7 +122,7 @@ const ProfilePage = (props: Props) => {
         <div className="flex w-full md:w-3/6 mt-10 md:mt-0  text-center   justify-center  md:justify-start items-center text-2xl">
           <div className="mx-5">
             <span className="text-emerald-300 mx-1">
-              {profileData?.profile?.stats.totalPosts}
+              {publicationsData?.publications.items.length}
             </span>{" "}
             Wizzies
           </div>

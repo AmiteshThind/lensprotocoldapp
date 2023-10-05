@@ -1,4 +1,4 @@
-import { fetcher } from "@/auth-fetcher";
+import { fetcher } from "@/src/graphql/auth-fetcher";
 import {
   ChallengeQuery,
   ChallengeQueryVariables,
