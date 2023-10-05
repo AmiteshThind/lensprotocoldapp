@@ -43,7 +43,7 @@ const config = createConfig({
 });
 
 const lensConfig: LensConfig = {
-  appId: appId("WizzDao"),
+  appId: appId("wizz_dao"),
   bindings: wagmiBindings(),
   environment: production,
 };
