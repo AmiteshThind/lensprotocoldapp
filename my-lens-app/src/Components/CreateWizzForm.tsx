@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { WizzPost, WizzPostFormError } from "../common/types";
 import { BiErrorCircle } from "react-icons/bi";
-
+import { Web3Button } from "@thirdweb-dev/react";
+import { LENS_CONTRACT_ADDRESS, LENS_CONTRACT_ABI } from "../const/contracts";
+import { useCreatePost } from "../lib/auth/usePost";
 interface Props {}
 
 const CreateWizzForm = ({}: Props) => {
+  const { mutateAsync: createPost } = useCreatePost();
   const [newWizz, setNewWizz] = useState<WizzPost>({
     category: "",
     description: "",
@@ -133,11 +136,18 @@ const CreateWizzForm = ({}: Props) => {
             }
             type="file"
             className="file-input file-input-bordered w-full  "
-            accept="image/*, video/*"
+            accept="image/*, video/mp4"
           />
         </div>
         <div className="w-full mt-5 flex justify-center">
-          <button className="btn-success mt-5 btn btn-wide">Post Wizz</button>
+          <Web3Button
+            contractAddress={LENS_CONTRACT_ADDRESS}
+            contractAbi={LENS_CONTRACT_ABI}
+            action={async () => await createPost(newWizz)}
+            className="btn-success rounded-xl mt-5 btn btn-wide"
+          >
+            Post Wizz
+          </Web3Button>
         </div>
       </form>
     </div>
