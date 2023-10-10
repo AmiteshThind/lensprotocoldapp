@@ -6,7 +6,7 @@ import useLensUser from "./useLensUser";
 export function useHasReacted(publicationId: string) {
   let reaction;
   const { profileQuery } = useLensUser();
-  const { data } = useWhoReactedPublicationQuery(
+  const { data, isLoading, isSuccess } = useWhoReactedPublicationQuery(
     {
       request: {
         publicationId: publicationId,
@@ -20,5 +20,7 @@ export function useHasReacted(publicationId: string) {
 
   return {
     hasReacted: reaction,
+    isLoading: isLoading,
+    isSuccess: isSuccess
   };
 }

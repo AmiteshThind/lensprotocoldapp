@@ -17,33 +17,40 @@ import useLogin from "../lib/auth/useLogin";
 import { useAddReaction } from "../lib/auth/useAddReaction";
 import { useHasReacted } from "../lib/auth/useHasReacted";
 import { useRemoveReaction } from "../lib/auth/remove-reaction";
-import { useQueryClient } from "@tanstack/react-query";
 
 interface Props {
   post: ExplorePublicationsQuery["explorePublications"]["items"][0];
 }
 const LikePost = ({ post }: Props) => {
   //   const { mutateAsync: loginUser } = useLogin();
-  const queryClient = useQueryClient();
   const { mutateAsync: addLikeReaction } = useAddReaction();
   const { mutateAsync: removeLikeReaction } = useRemoveReaction();
-  const { hasReacted } = useHasReacted(post.id);
+  const { hasReacted, isLoading, isSuccess } = useHasReacted(post.id);
   console.log("WHAT" + hasReacted);
+  const [upvoted, setUpvoted] = useState<ReactionTypes | undefined>(undefined);
+
+  useEffect(() => {
+    setUpvoted(hasReacted);
+    console.log("WHAT" + hasReacted);
+  }, [isSuccess]);
+
   return (
     <div>
-      {hasReacted != ReactionTypes.Upvote ? (
+      {!upvoted ? (
         <AiOutlineHeart
           onClick={async () => {
+            setUpvoted(ReactionTypes.Upvote);
             await addLikeReaction(post.id);
-            queryClient.invalidateQueries();
+
+            //queryClient.invalidateQueries();
           }}
           className="h-5 w-5 hover:text-red-500 hover:scale-125 hover:duration-200 cursor-pointer"
         />
       ) : (
         <AiFillHeart
           onClick={async () => {
+            setUpvoted(undefined);
             await removeLikeReaction(post.id);
-            queryClient.invalidateQueries();
           }}
           className="h-5 w-5 text-red-500 hover:scale-125 hover:duration-200 cursor-pointer"
         />
