@@ -24,10 +24,10 @@ export function useCreatePost() {
 
   async function createPost(newWizz: WizzPost) {
     //0. upload image to ipfs
-
-    const imageIpfsUrl =
-      (await uploadToIpfs({ data: [newWizz.media] }))[0] || "";
-
+    let imageIpfsUrl;
+    if (newWizz.media != null) {
+      imageIpfsUrl = (await uploadToIpfs({ data: [newWizz.media] }))[0] || "";
+    }
     // upload actual content to ipfs
 
     const postMetaData = {

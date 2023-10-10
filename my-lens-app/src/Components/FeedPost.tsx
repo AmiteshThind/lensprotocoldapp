@@ -12,7 +12,7 @@ type Props = {
 };
 
 const FeedPost = ({ publication }: Props) => {
-  
+  console.log(publication);
   return (
     <div className="flex   relative ">
       <div className="   transition delay-150 border  border-neutral-700     w-full     ">
@@ -55,8 +55,7 @@ const FeedPost = ({ publication }: Props) => {
                 {publication.metadata.description}
               </div>
             </div>
-            {(publication?.metadata?.media?.length > 0 ||
-              publication.metadata.image) && (
+            {publication.metadata.image && (
               <div className="my-5 px-10 flex ">
                 {publication?.metadata?.image.includes("MOV") ? (
                   <Player

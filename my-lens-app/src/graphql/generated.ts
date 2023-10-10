@@ -4005,6 +4005,13 @@ export type RefreshMutationVariables = Exact<{
 
 export type RefreshMutation = { __typename?: 'Mutation', refresh: { __typename?: 'AuthenticationResult', accessToken: any, refreshToken: any } };
 
+export type RemoveReactionMutationVariables = Exact<{
+  request: ReactionRequest;
+}>;
+
+
+export type RemoveReactionMutation = { __typename?: 'Mutation', removeReaction?: any | null };
+
 export type CreateUnfollowTypedDataMutationVariables = Exact<{
   request: UnfollowRequest;
 }>;
@@ -4914,6 +4921,20 @@ export const useRefreshMutation = <
     useMutation<RefreshMutation, TError, RefreshMutationVariables, TContext>(
       ['Refresh'],
       (variables?: RefreshMutationVariables) => fetcher<RefreshMutation, RefreshMutationVariables>(RefreshDocument, variables)(),
+      options
+    );
+export const RemoveReactionDocument = `
+    mutation removeReaction($request: ReactionRequest!) {
+  removeReaction(request: $request)
+}
+    `;
+export const useRemoveReactionMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(options?: UseMutationOptions<RemoveReactionMutation, TError, RemoveReactionMutationVariables, TContext>) =>
+    useMutation<RemoveReactionMutation, TError, RemoveReactionMutationVariables, TContext>(
+      ['removeReaction'],
+      (variables?: RemoveReactionMutationVariables) => fetcher<RemoveReactionMutation, RemoveReactionMutationVariables>(RemoveReactionDocument, variables)(),
       options
     );
 export const CreateUnfollowTypedDataDocument = `

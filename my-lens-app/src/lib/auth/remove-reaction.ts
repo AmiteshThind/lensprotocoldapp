@@ -5,20 +5,21 @@ import { ReactionTypes, LensClient, production } from "@lens-protocol/client";
 import {
   useAddReactionMutation,
   useCreateFollowTypedDataMutation,
+  useRemoveReactionMutation,
   useWhoReactedPublicationQuery,
 } from "@/src/graphql/generated";
 
-export function useAddReaction() {
+export function useRemoveReaction() {
   console.log("called useaddreaction");
   const { mutateAsync: loginUser } = useLogin();
   const { profileQuery } = useLensUser();
   //   const lensClient = new LensClient({
   //     environment: production,
   //   });
-  const { mutateAsync: addReactionMutation } = useAddReactionMutation();
+  const { mutateAsync: removeReactionMutation } = useRemoveReactionMutation();
 
-  async function addReaction(publicationId: string) {
-    const result = await addReactionMutation({
+  async function removeReaction(publicationId: string) {
+    const result = await removeReactionMutation({
       request: {
         profileId: profileQuery.data?.defaultProfile?.id,
         publicationId: publicationId,
@@ -27,5 +28,5 @@ export function useAddReaction() {
     });
   }
 
-  return useMutation(addReaction);
+  return useMutation(removeReaction);
 }
