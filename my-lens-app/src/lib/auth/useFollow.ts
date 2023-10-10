@@ -14,6 +14,7 @@ export function useFollow() {
   const sdk = useSDK();
   const address = useAddress();
   const { mutateAsync: loginUser } = useLogin();
+  console.log("called useFollow");
   //1. use auto generated mutation called "useCreateFollowTypedData" to get the typed data for the user to sign
   async function follow(userId: string) {
     await loginUser();

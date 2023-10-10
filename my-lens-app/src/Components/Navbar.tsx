@@ -19,7 +19,7 @@ const Navbar = (props: Props) => {
   console.log(pathname + "wp");
   return (
     <div className=" w-full  items-center fixed flex justify-center top-0  z-10">
-      <div className="navbar backdrop-blur bg-neutral-900/75 z-10   border-b border-neutral-800  w-full ">
+      <div className="navbar backdrop-blur bg-neutral-900/75 z-10   border-b border-neutral-700  w-full ">
         <div className="navbar-start ">
           <div className="dropdown ">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

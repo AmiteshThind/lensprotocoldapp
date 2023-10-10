@@ -32,7 +32,7 @@ const CreateWizzForm = ({}: Props) => {
     }
 
     if (newWizz.category == "") {
-      console.log("er");
+      
       setErrorMessages({
         ...errorMessages,
         categoryError: "Select a category",

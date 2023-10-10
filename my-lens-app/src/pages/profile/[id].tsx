@@ -51,7 +51,7 @@ const ProfilePage = (props: Props) => {
     );
 
   console.log(profileData);
-  console.log(publicationsData);
+  console.log("data" + publicationsData);
 
   //row 1 - back button
   // row 2 profile pic, bio, follow button , stats
