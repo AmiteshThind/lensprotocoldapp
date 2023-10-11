@@ -8,6 +8,7 @@ import {
   useExplorePublicationsQuery,
 } from "../graphql/generated";
 import Navbar from "../Components/Navbar";
+import CreateWizzInput from "../Components/CreateWizzInput";
 
 type HomeProps = {
   children: React.ReactNode;
@@ -29,23 +30,28 @@ export default function Home(props: HomeProps) {
   console.log("wow" + data?.explorePublications.items[0]);
 
   if (isLoading) {
-    <div
-      className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-      role="status"
-    >
-      <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-        Loading...
-      </span>
-    </div>;
+    console.log("isLOADING");
+    return (
+      <div className="h-screen flex w-screen justify-center items-center">
+        <span className="  loading loading-spinner loading-lg text-emerald-500 "></span>
+      </div>
+    );
   }
 
   return (
     <div className="mt-20">
-      <div className=" flex  items-center flex-col  w-full   ">
-        <div className="  w-5/6 sm:w-5/6   md:w-5/6 lg:w-2/3 xl:w-1/3 ">
-          {data?.explorePublications.items.map((publication) => (
-            <FeedPost publication={publication} key={publication.id} />
-          ))}
+      <div className="flex flex-col items-center ">
+        <div className="w-full flex justify-center  ">
+          <CreateWizzInput />
+        </div>
+        <div className=" flex  items-center flex-col  w-full   ">
+          <div className="  w-5/6 sm:w-5/6   md:w-5/6 lg:w-2/3 xl:w-1/3 ">
+            {data?.explorePublications.items
+              .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
+              .map((publication) => (
+                <FeedPost publication={publication} key={publication.id} />
+              ))}
+          </div>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const FeedPost = ({ publication }: Props) => {
   console.log(publication);
   return (
     <div className="flex   relative ">
-      <div className="   transition delay-150 border  border-neutral-700     w-full     ">
+      <div className="   transition delay-150 border rounded-xl my-2 border-neutral-700     w-full     ">
         <div className="text-neutral-100">
           <div className="flex mx-5 my-5">
             <Link href={`/profile/${publication.profile.handle}`}>

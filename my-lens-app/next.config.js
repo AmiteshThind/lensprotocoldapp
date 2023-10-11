@@ -6,6 +6,15 @@ const nextConfig = {
     NEXT_PUBLIC_STUDIO_API_KEY: process.env.NEXT_PUBLIC_STUDIO_API_KEY,
   },
   transpilePackages: ["@lens-protocol"],
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/landing",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

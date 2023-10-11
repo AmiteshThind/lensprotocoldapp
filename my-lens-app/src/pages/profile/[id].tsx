@@ -64,7 +64,7 @@ const ProfilePage = (props: Props) => {
           <AiOutlineLeftCircle className="text-emerald-300 h-8 w-8" />
         </Link>
       </div>
-      <div className="bg-neutral-800 mt-5 flex flex-col justify-center md:flex-row items-center p-5 rounded-xl">
+      <div className="border border-neutral-700 mt-5 flex flex-col justify-center md:flex-row items-center p-5 rounded-xl">
         <div className="flex items-center justify-center flex-col sm:flex-row  w-full md:w-2/6 ">
           <div className="avatar h-full">
             <div className="w-36 h-36 mx-3 rounded-full">

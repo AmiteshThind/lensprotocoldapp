@@ -32,7 +32,6 @@ const CreateWizzForm = ({}: Props) => {
     }
 
     if (newWizz.category == "") {
-      
       setErrorMessages({
         ...errorMessages,
         categoryError: "Select a category",
@@ -65,7 +64,7 @@ const CreateWizzForm = ({}: Props) => {
     <div className="w-full">
       <form
         onSubmit={createNewWizz}
-        className="w-full border border-neutral-800 rounded-lg p-12 "
+        className="w-full border border-neutral-800 rounded-xl p-12 "
       >
         <div className="flex justify-center text-2xl my-2 text-emerald-400 font-semibold">
           Create a Wizz
@@ -143,7 +142,15 @@ const CreateWizzForm = ({}: Props) => {
           <Web3Button
             contractAddress={LENS_CONTRACT_ADDRESS}
             contractAbi={LENS_CONTRACT_ABI}
-            action={async () => await createPost(newWizz)}
+            action={async () => {
+              await createPost(newWizz).then(() => {
+                setNewWizz({
+                  category: "",
+                  description: "",
+                  media: null,
+                });
+              });
+            }}
             className="btn-success rounded-xl mt-5 btn btn-wide"
           >
             Post Wizz

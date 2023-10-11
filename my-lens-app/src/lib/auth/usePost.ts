@@ -14,13 +14,14 @@ import {
   LENS_CONTRACT_ABI,
   LENS_CONTRACT_ADDRESS,
 } from "@/src/const/contracts";
-import { useMutation } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 
 export function useCreatePost() {
   const { mutateAsync: requestTypedData } = useCreatePostTypedDataMutation();
   const { mutateAsync: uploadToIpfs } = useStorageUpload();
   const { profileQuery } = useLensUser();
   const sdk = useSDK();
+  const queryClient = useQueryClient();
 
   async function createPost(newWizz: WizzPost) {
     //0. upload image to ipfs
@@ -104,6 +105,9 @@ export function useCreatePost() {
         },
       },
     ]);
+    if (result) {
+      queryClient.invalidateQueries();
+    }
   }
 
   return useMutation(createPost);

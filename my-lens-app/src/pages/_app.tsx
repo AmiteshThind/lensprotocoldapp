@@ -9,7 +9,7 @@ import {
   studioProvider,
 } from "@livepeer/react";
 import * as React from "react";
-import Layout from ".";
+import Layout from "./home";
 import Navbar from "../Components/Navbar";
 import {
   appId,

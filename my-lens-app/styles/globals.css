@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bodyLandingPage {
+  background-image: url("../src/bg12.jpg");
+}
