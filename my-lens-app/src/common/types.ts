@@ -8,3 +8,11 @@ export interface WizzPostFormError {
   categoryError: string;
   descriptionError: string;
 }
+
+export interface WizzComment {
+  text: string;
+}
+
+export interface WizzCommentError {
+  textError: string;
+}
