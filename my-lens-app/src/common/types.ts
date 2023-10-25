@@ -11,6 +11,7 @@ export interface WizzPostFormError {
 
 export interface WizzComment {
   text: string;
+  publicationId: string;
 }
 
 export interface WizzCommentError {
