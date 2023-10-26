@@ -8,6 +8,9 @@ type Props = {
 };
 
 const Comment = ({ comment }: Props) => {
+  //we have the publication which is comment
+  //1. make query for publications based on this comment
+  //2. everytime a comment is made under another comment it should also store its reference to the main pubication it comes udner
   const [showReplySection, setShowReplySection] = useState<boolean>(false);
   return (
     <div>

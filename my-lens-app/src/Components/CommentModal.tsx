@@ -11,6 +11,7 @@ import { LENS_CONTRACT_ADDRESS, LENS_CONTRACT_ABI } from "../const/contracts";
 import { useCreatePost } from "../lib/auth/usePost";
 import { ExplorePublicationsQuery } from "../graphql/generated";
 import { useCreateComment } from "../lib/auth/useCreateComment";
+import { IoMdSend } from "react-icons/io";
 interface Props {
   publication: ExplorePublicationsQuery["explorePublications"]["items"][0];
 }
@@ -104,18 +105,22 @@ const CommentModal = ({ publication }: Props) => {
                     />
                   </div>
                 </div>
-                <div className="mx-3 w-full">
-                  <textarea
-                    onChange={(e) => {
+                <div className="mx-3 w-full     border-2 rounded-xl border-neutral-800 bg-neutral-900">
+                  <div
+                    contentEditable
+                    onInput={(e) => {
+                      const input = e.target as HTMLElement;
                       setNewWizzComment({
                         ...newWizzComment,
-                        text: e.target.value,
+                        text: input.innerText,
                       });
                     }}
-                    className="textarea textarea-bordered border-2 h-24 w-full text-white"
-                    placeholder="Post Reply"
-                    value={newWizzComment.text}
-                  ></textarea>
+                    className="  outline-none p-3 text-sm  min-h-16 w-full text-white"
+                    data-text="Post Reply"
+                  ></div>
+                  <div className=" flex justify-end p-2 ">
+                    <IoMdSend className="hover:text-emerald-400 cursor-pointer" />
+                  </div>
                 </div>
               </div>
               <div className="w-full my-5 flex justify-center">
