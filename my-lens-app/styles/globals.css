@@ -5,3 +5,6 @@
 .bodyLandingPage {
   background-image: url("../src/bg12.jpg");
 }
+[contentEditable="true"]:empty:not(:focus):before {
+  content: attr(data-text);
+}

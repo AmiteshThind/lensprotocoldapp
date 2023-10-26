@@ -5,6 +5,7 @@ import FeedPost from "../Components/FeedPost";
 
 import {
   PublicationSortCriteria,
+  PublicationTypes,
   useExplorePublicationsQuery,
 } from "../graphql/generated";
 import Navbar from "../Components/Navbar";
@@ -20,6 +21,7 @@ export default function Home(props: HomeProps) {
       request: {
         sortCriteria: PublicationSortCriteria.Latest,
         sources: ["wizz_dao"],
+        publicationTypes: [PublicationTypes.Post],
       },
     },
     {
@@ -49,7 +51,9 @@ export default function Home(props: HomeProps) {
             {data?.explorePublications.items
               .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
               .map((publication) => (
-                <FeedPost publication={publication} key={publication.id} />
+                <div className="mb-5">
+                  <FeedPost publication={publication} key={publication.id} />
+                </div>
               ))}
           </div>
         </div>

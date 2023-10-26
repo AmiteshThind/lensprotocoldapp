@@ -44,7 +44,7 @@ const LikePost = ({ post }: Props) => {
 
             //queryClient.invalidateQueries();
           }}
-          className="h-5 w-5 hover:text-red-500 hover:scale-125 hover:duration-200 cursor-pointer"
+          className="h-5 w-5 text-neutral-300  hover:text-red-500 hover:scale-125 hover:duration-200 cursor-pointer"
         />
       ) : (
         <AiFillHeart
@@ -52,7 +52,7 @@ const LikePost = ({ post }: Props) => {
             setUpvoted(undefined);
             await removeLikeReaction(post.id);
           }}
-          className="h-5 w-5 text-red-500 hover:scale-125 hover:duration-200 cursor-pointer"
+          className="h-5 w-5  text-red-500 hover:scale-125 hover:duration-200 cursor-pointer"
         />
       )}
     </div>

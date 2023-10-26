@@ -16,16 +16,8 @@ const CommentPost = ({ publication, showCommentModal }: Props) => {
         }
         className="h-5 w-5 hover:text-blue-400 cursor-pointer"
       />
-      <dialog id={"my_modal_4" + publication.id} className="modal">
-        <div className="modal-box p-8">
-          <form method="dialog">
-            <button className="btn btn-xs mx-1 my-1 btn-circle btn-ghost absolute right-1 top-1">
-              ✕
-            </button>
-          </form>
-          <CommentModal publication={publication} />
-        </div>
-      </dialog>
+
+      <CommentModal publication={publication} />
     </div>
   );
 };
