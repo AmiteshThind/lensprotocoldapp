@@ -1,8 +1,10 @@
 import { MediaRenderer } from "@thirdweb-dev/react";
 import React, { useState } from "react";
-import { PublicationsQuery } from "../graphql/generated";
+import { PublicationsQuery, usePublicationsQuery } from "../graphql/generated";
 import LikePost from "./LikePost";
 import { IoMdSend } from "react-icons/io";
+import { useCreateComment } from "../lib/auth/useCreateComment";
+import { WizzComment } from "../common/types";
 type Props = {
   comment: PublicationsQuery["publications"]["items"][0];
 };
@@ -10,8 +12,51 @@ type Props = {
 const Comment = ({ comment }: Props) => {
   //we have the publication which is comment
   //1. make query for publications based on this comment
-  //2. everytime a comment is made under another comment it should also store its reference to the main pubication it comes udner
+
+  const { isLoading, error, data } = usePublicationsQuery(
+    // collectedBy?: InputMaybe<Scalars['EthereumAddress']['input']>;
+    // commentsOf?: InputMaybe<Scalars['InternalPublicationId']['input']>;
+    // commentsOfOrdering?: InputMaybe<CommentOrderingTypes>;
+    // commentsRankingFilter?: InputMaybe<CommentRankingFilter>;
+    // cursor?: InputMaybe<Scalars['Cursor']['input']>;
+    // customFilters?: InputMaybe<Array<CustomFiltersTypes>>;
+    // limit?: InputMaybe<Scalars['LimitScalar']['input']>;
+    // metadata?: InputMaybe<PublicationMetadataFilters>;
+    // profileId?: InputMaybe<Scalars['ProfileId']['input']>;
+    // profileIds?: InputMaybe<Array<Scalars['ProfileId']['input']>>;
+    // publicationIds?: InputMaybe<Array<Scalars['InternalPublicationId']['input']>>;
+    // publicationTypes?: InputMaybe<Array<PublicationTypes>>;
+    // sources?: InputMaybe<Array<Scalars['Sources']['input']>>;
+    {
+      request: {
+        commentsOf: comment.id,
+      },
+    },
+    {
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+    }
+  );
+
+  if (data) {
+    console.log(data.publications?.items[0]?.metadata);
+  }
+
   const [showReplySection, setShowReplySection] = useState<boolean>(false);
+  const { mutateAsync: creatComment } = useCreateComment();
+  const commentInputText = document.getElementById("commentTextArea");
+  const [newWizzComment, setNewWizzComment] = useState<WizzComment>({
+    text: "",
+    publicationId: comment.id,
+  });
+  //2. everytime a comment is made under another comment it should also store its reference to the main pubication it comes udner
+  async function createComment() {
+    await creatComment(newWizzComment).then(() => {
+      setNewWizzComment({ ...newWizzComment, text: "" });
+      if (commentInputText) commentInputText.innerText = "";
+    });
+  }
+
   return (
     <div>
       <div className="flex   relative ">
@@ -66,11 +111,15 @@ const Comment = ({ comment }: Props) => {
               <div className="w-full  flex px-10  pb-2">
                 <div className=" min-h-16 outline-none border-none p-5 rounded-xl bg-neutral-900 w-full border">
                   <div
+                    id="commentTextArea"
                     className="outline-none border-none text-sm "
                     contentEditable="true"
                     data-text="Post comment here..."
                   ></div>
-                  <div className=" flex justify-end ">
+                  <div
+                    onClick={() => createComment()}
+                    className=" flex justify-end "
+                  >
                     <IoMdSend className="hover:text-emerald-400 cursor-pointer" />
                   </div>
                 </div>
