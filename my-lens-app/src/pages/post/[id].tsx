@@ -66,10 +66,10 @@ const PostPage = (props: Props) => {
       refetchOnReconnect: false,
     }
   );
-  console.log(data);
+  // console.log(data);
 
   if (isLoading || isLoadingPublication) {
-    console.log("isLOADING");
+    // console.log("isLOADING");
     return (
       <div className="h-screen flex w-screen justify-center items-center">
         <span className="  loading loading-spinner loading-lg text-emerald-500 "></span>

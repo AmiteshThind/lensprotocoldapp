@@ -26,12 +26,12 @@ const LikePost = ({ post }: Props) => {
   const { mutateAsync: addLikeReaction } = useAddReaction();
   const { mutateAsync: removeLikeReaction } = useRemoveReaction();
   const { hasReacted, isLoading, isSuccess } = useHasReacted(post.id);
-  console.log("WHAT" + hasReacted);
+  // console.log("WHAT" + hasReacted);
   const [upvoted, setUpvoted] = useState<ReactionTypes | undefined>(undefined);
 
   useEffect(() => {
     setUpvoted(hasReacted);
-    console.log("WHAT" + hasReacted);
+    // console.log("WHAT" + hasReacted);
   }, [isSuccess]);
 
   return (

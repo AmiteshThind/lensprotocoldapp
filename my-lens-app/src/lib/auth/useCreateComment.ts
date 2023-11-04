@@ -55,6 +55,8 @@ export function useCreateComment() {
     )[0];
 
     console.log(postMetaDataIpfsUrl);
+    console.log("text" + comment.text);
+    console.log(comment.publicationId);
 
     // 1. get typed data from lens
     const typedData = await requestTypedData({
@@ -111,7 +113,6 @@ export function useCreateComment() {
       },
     ]);
 
-    console.log(result);
     if (result) {
       queryClient.invalidateQueries();
     }

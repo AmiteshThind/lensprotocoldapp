@@ -12,7 +12,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 // Get QueryClient from the context
 
 export function useAddReaction() {
-  console.log("called useaddreaction");
+  // console.log("called useaddreaction");
   const { mutateAsync: loginUser } = useLogin();
   const { profileQuery } = useLensUser();
   const queryClient = useQueryClient();

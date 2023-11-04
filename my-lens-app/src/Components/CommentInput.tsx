@@ -64,7 +64,7 @@ const CommentInput = ({ publicationId }: Props) => {
               contractAddress={LENS_CONTRACT_ADDRESS}
               contractAbi={LENS_CONTRACT_ABI}
               action={async () => {
-                console.log("called reply on post page");
+                // console.log("called reply on post page");
                 await creatComment(newWizzComment).then(() => {
                   setNewWizzComment({ ...newWizzComment, text: "" });
                   if (commentInputText) commentInputText.innerText = "";

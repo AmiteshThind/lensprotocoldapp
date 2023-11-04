@@ -16,7 +16,7 @@ type Props = {};
 const Navbar = (props: Props) => {
   const pathname = usePathname();
   const { profileQuery } = useLensUser();
-  console.log(pathname + "wp");
+  // console.log(pathname + "wp");
   return (
     <div>
       {pathname != "/landing" && (

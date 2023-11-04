@@ -51,8 +51,8 @@ export function useCreatePost() {
       await uploadToIpfs({ data: [postMetaData] })
     )[0];
 
-    console.log(imageIpfsUrl);
-    console.log(postMetaDataIpfsUrl);
+    // console.log(imageIpfsUrl);
+    // console.log(postMetaDataIpfsUrl);
 
     // 1. get typed data from lens
     const typedData = await requestTypedData({

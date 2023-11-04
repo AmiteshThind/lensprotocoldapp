@@ -29,10 +29,10 @@ export default function Home(props: HomeProps) {
       refetchOnReconnect: false,
     }
   );
-  console.log("wow" + data?.explorePublications.items[0]);
+  // console.log("wow" + data?.explorePublications.items[0]);
 
   if (isLoading) {
-    console.log("isLOADING");
+    // console.log("isLOADING");
     return (
       <div className="h-screen flex w-screen justify-center items-center">
         <span className="  loading loading-spinner loading-lg text-emerald-500 "></span>

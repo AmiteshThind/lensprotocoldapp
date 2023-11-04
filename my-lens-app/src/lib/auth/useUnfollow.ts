@@ -59,7 +59,7 @@ export function useUnfollow() {
         value.tokenId,
         { v, r, s, deadline: value.deadline },
       ]);
-      console.log(response);
+      // console.log(response);
     } catch (err) {
       console.log(err);
     }

@@ -48,12 +48,12 @@ const CreateWizzForm = ({}: Props) => {
         categoryError: "Select a category",
         descriptionError: "",
       });
-      console.log(errorMessages);
+      // console.log(errorMessages);
       return;
     }
-    console.log(newWizz.description.length);
+    // console.log(newWizz.description.length);
     if (newWizz.description.length < 250) {
-      console.log(errorMessages);
+      // console.log(errorMessages);
       setErrorMessages({
         ...errorMessages,
         descriptionError: "Description must contain atleast 250 characters",
@@ -172,9 +172,9 @@ const CreateWizzForm = ({}: Props) => {
                       newWizz.description.length < 250 || newWizz.category == ""
                     )
                   ) {
-                    console.log("reached this time");
-                    console.log(errorMessages.categoryError);
-                    console.log(errorMessages.descriptionError);
+                    // console.log("reached this time");
+                    // console.log(errorMessages.categoryError);
+                    // console.log(errorMessages.descriptionError);
                     await createPost(newWizz).then(() => {
                       setNewWizz({
                         category: "",

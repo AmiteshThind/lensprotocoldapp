@@ -16,7 +16,7 @@ export default async function refreshAccessToken(): Promise<string | null> {
     variables?: TVariables,
     options?: RequestInit["headers"]
   ): Promise<TData> {
-    const res = await fetch("https://api.lens.dev/", {
+    const res = await fetch("https://api-v2.lens.dev", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

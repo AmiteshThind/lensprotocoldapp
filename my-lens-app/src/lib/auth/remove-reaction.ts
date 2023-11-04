@@ -11,7 +11,7 @@ import {
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export function useRemoveReaction() {
-  console.log("called useaddreaction");
+  // console.log("called useaddreaction");
   const { mutateAsync: loginUser } = useLogin();
   const { profileQuery } = useLensUser();
   //   const lensClient = new LensClient({

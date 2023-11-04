@@ -30,7 +30,7 @@ export default function SignInButton({}: Props) {
       />
     );
   } else {
-    console.log("ADDRESS" + address);
+    // console.log("ADDRESS" + address);
   }
   // user needs to be on right network
   if (isOnWrongNetwork) {
@@ -66,12 +66,12 @@ export default function SignInButton({}: Props) {
   }
 
   if (!profileQuery.data?.defaultProfile) {
-    console.log(profileQuery.data);
+    // console.log(profileQuery.data);
     return <div>No Lens Profile</div>;
   }
 
   if (profileQuery.data?.defaultProfile) {
-    console.log(profileQuery.data);
+    // console.log(profileQuery.data);
     if (address) {
       return (
         <button onClick={() => disconnect()} className="cursor text-white mx-2">

@@ -6,7 +6,7 @@ import { useDefaultProfileQuery } from "@/src/graphql/generated";
 export default function useLensUser() {
   //1. make a react query for local storage key
   const address = useAddress();
-  console.log(address);
+  // console.log(address);
   const localStorageQuery = useQuery(["lens-user", address], () => {
     const token = readAccessToken();
     return token;
@@ -24,6 +24,8 @@ export default function useLensUser() {
       enabled: !!address, //means not undfined and user is connected as address is avaiable
     }
   );
+
+  console.log(profileQuery.data);
 
   return {
     //contains information about borth the local storage and the info about the lens profile
